@@ -2,14 +2,14 @@
 const fs = require('fs');
 const pool = require('./db');
 
-const sql = fs.readFileSync('./db/web_app_database2_plain.sql').toString();
-
 (async () => {
   try {
+    const sql = fs.readFileSync('./db/web_app_database2_plain.sql', 'utf8');
+    console.log('⏳ Restaurando base de datos...');
     await pool.query(sql);
-    console.log('✅ Base de datos restaurada exitosamente en Render');
+    console.log('✅ Base de datos restaurada correctamente.');
   } catch (err) {
-    console.error('❌ Error al restaurar la base:', err);
+    console.error('❌ Error al restaurar la base de datos:', err.message);
   } finally {
     pool.end();
   }

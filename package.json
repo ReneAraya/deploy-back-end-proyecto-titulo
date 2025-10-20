@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm run restore-db && node index.js",
+    "restore-db": "node restore.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
